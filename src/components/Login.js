@@ -55,7 +55,7 @@ export default function Login() {
         const formData = new FormData()
         formData.append('email', inputValues.email)
         formData.append('password', inputValues.password)
-        axios.post('http://localhost:8000/api/loginUser', formData)
+        axios.post('http://localhost:8000/banana/app/login', formData)
             .then((response) => {
                 if (response.data.data === '1') {
                     alert('Login successfully.');

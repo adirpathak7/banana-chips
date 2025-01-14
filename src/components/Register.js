@@ -100,7 +100,7 @@ export default function Register() {
         const signUpForm = document.getElementById('signUpForm');
         const signUpFormData = new FormData(signUpForm);
 
-        axios.post('http://localhost:8000/api/signUpUser', signUpFormData).then((response) => {
+        axios.post('http://localhost:8000/banana/app/register', signUpFormData).then((response) => {
             if (response.data.data === '1') {
                 alert("User registered successfully.");
                 setInputValues({
