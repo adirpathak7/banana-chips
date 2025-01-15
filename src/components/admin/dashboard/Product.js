@@ -6,15 +6,14 @@ export default function Product() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios
-            .get("https://banana-backend-production.up.railway.app/banana/app/admin/product/allProducts")
+        axios.get('https://banana-backend-production.up.railway.app/banana/app/admin/product/allProducts', {
+            withCredentials: true,
+        })
             .then((response) => {
-                setProducts(response.data);
-                setLoading(false);
+                console.log('Products:', response.data);
             })
             .catch((error) => {
-                console.error("Error fetching products:", error);
-                setLoading(false);
+                console.error('Error fetching products:', error);
             });
     }, []);
 
