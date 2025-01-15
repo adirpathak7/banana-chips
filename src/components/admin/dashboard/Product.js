@@ -9,12 +9,12 @@ export default function Product() {
         axios.get('https://banana-backend-production.up.railway.app/banana/app/admin/product/allProducts', {
             withCredentials: true,
         })
-            .then((response) => {
-                console.log('Products:', response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching products:', error);
-            });
+        .then((response) => {
+            console.log('Products:', response.data);
+        })
+        .catch((error) => {
+            console.error('Error fetching products:', error);
+        });
     }, []);
 
     if (loading) {
