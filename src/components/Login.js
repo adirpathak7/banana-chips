@@ -62,11 +62,14 @@ export default function Login() {
                     // sessionStorage.setItem('authToken', response.data.token);
                     // sessionStorage.setItem('userRole', response.data.role);
                     navigate('/user/dashboard');
-                } else {
-                    // sessionStorage.clear();
-                    userSignInErrorMessage.innerHTML = "Invalid Password";
+                } else if (response.data.error) {
+                    // If there is an error message in the response, display it
+                    userSignInErrorMessage.innerHTML = response.data.error; // Display the error from backend
                     setInputValues({ email: '', password: '' });
-                    console.log(response);
+                } else {
+                    // Handle any unexpected case
+                    userSignInErrorMessage.innerHTML = "An unknown error occurred!";
+                    setInputValues({ email: '', password: '' });
                 }
             })
             .catch((error) => {

@@ -7,7 +7,7 @@ export default function Product() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8000/banana/app/admin/product/allProducts")
+            .get("https://banana-backend-production.up.railway.app/banana/app/admin/product/allProducts")
             .then((response) => {
                 setProducts(response.data);
                 setLoading(false);

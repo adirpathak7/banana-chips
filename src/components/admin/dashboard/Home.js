@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
   const [productName, setProductName] = useState('');
@@ -23,14 +24,15 @@ export default function Home() {
     formData.append('category', category || 'Un-Categorized');
     formData.append('productImage', productImage);
 
-    // Make API call here
-    fetch('http://localhost:8000/banana/app/admin/product/addProduct', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => alert(data.message))
-      .catch((error) => alert('Error: ' + error));
+    // Make API call here using axios
+    axios
+      .post('https://banana-backend-production.up.railway.app/banana/app/admin/product/addProduct', formData)
+      .then((response) => {
+        alert(response.data.message);
+      })
+      .catch((error) => {
+        alert('Error: ' + error.message);
+      });
   };
 
   return (
