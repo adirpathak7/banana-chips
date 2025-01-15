@@ -100,7 +100,7 @@ export default function Register() {
         const signUpForm = document.getElementById('signUpForm');
         const signUpFormData = new FormData(signUpForm);
 
-        axios.post('http://localhost:8000/banana/app/register', signUpFormData).then((response) => {
+        axios.post('https://banana-backend-production.up.railway.app/banana/app/register', signUpFormData).then((response) => {
             if (response.data.data === '1') {
                 alert("User registered successfully.");
                 setInputValues({
