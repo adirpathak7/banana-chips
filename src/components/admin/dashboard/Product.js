@@ -5,65 +5,62 @@ export default function Product() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch the products from the API
+    // Fetch products on component mount
     useEffect(() => {
         axios
-            .get('https://glorious-generosity-production.up.railway.app/banana/app/admin/product/allProducts')
+            .get('https://glorious-generosity-production.up.railway.app/banana/app/admin/product/allProducts', {
+                withCredentials: true,
+            })
             .then((response) => {
-                setProducts(response.data); // Set the products state with the data from the API
-                setLoading(false); // Set loading to false after data is fetched
+                setProducts(response.data); // Set products data to state
+                setLoading(false); // Data fetched, set loading to false
             })
             .catch((error) => {
                 console.error('Error fetching products:', error);
-                setLoading(false);
+                setLoading(false); // Set loading to false even in case of error
             });
     }, []);
 
-    // If loading, show a loading message
+    // If loading, show loading message
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen">
+            <div className="flex justify-center items-center h-screen bg-gray-100">
                 <div className="text-lg font-semibold">Loading products...</div>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto px-4 py-6">
-            <h1 className="text-2xl font-bold text-center mb-6">Product List</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.map((product) => (
-                    <div
-                        key={product.productId}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden"
-                    >
-                        <img
-                            src={product.productImage}
-                            alt={product.productName}
-                            className="w-full h-56 object-cover"
-                        />
-                        <div className="p-4">
-                            <h2 className="text-xl font-semibold truncate">{product.productName}</h2>
-                            <p className="text-gray-600 mt-2 text-sm">{product.description}</p>
-                            <div className="mt-4 flex justify-between items-center">
-                                <span className="text-lg font-semibold text-gray-800">
-                                    ₹{product.price}
-                                </span>
-                                <span className="text-sm text-gray-500">
-                                    {product.quantity} available
-                                </span>
-                            </div>
-                            <div className="mt-4">
-                                <button
-                                    className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
-                                    onClick={() => alert(`Added ${product.productName} to cart!`)}
+        <div className="p-6 bg-gray-100 min-h-screen">
+            <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Available Products</h1>
+            <div className="overflow-y-auto max-h-[80vh]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {products.map((product) => (
+                        <div
+                            key={product.productId}
+                            className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300"
+                        >
+                            <img
+                                src={product.productImage || "https://via.placeholder.com/300"}
+                                alt={product.productName}
+                                className="w-full h-48 object-cover"
+                            />
+                            <div className="p-4">
+                                <h2 className="text-xl font-semibold mb-2 text-gray-800">{product.productName}</h2>
+                                <p className="text-gray-600 mb-2">{product.description}</p>
+                                <p className="text-gray-800 font-bold mt-2">₹{product.price}</p>
+                                <p
+                                    className={`mt-2 ${product.quantity > 0 ? 'text-green-500' : 'text-red-500'
+                                        }`}
                                 >
-                                    Add to Cart
-                                </button>
+                                    {product.quantity > 0
+                                        ? `In Stock (${product.quantity})`
+                                        : 'Out of Stock'}
+                                </p>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );
