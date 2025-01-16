@@ -26,7 +26,7 @@ export default function Home() {
 
     // Make API call here using axios
     axios
-      .post('https://banana-backend-production.up.railway.app/banana/app/admin/product/addProduct', formData)
+      .post('https://glorious-generosity-production.up.railway.app/banana/app/admin/product/addProduct', formData)
       .then((response) => {
         alert(response.data.message);
       })

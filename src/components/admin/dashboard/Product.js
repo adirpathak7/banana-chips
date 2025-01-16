@@ -6,7 +6,7 @@ export default function Product() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://banana-backend-production.up.railway.app/banana/app/admin/product/allProducts', {
+        axios.get('https://glorious-generosity-production.up.railway.app/banana/app/admin/product/allProducts', {
             withCredentials: true,
         })
         .then((response) => {

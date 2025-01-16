@@ -100,7 +100,7 @@ export default function Register() {
         const signUpForm = document.getElementById('signUpForm');
         const signUpFormData = new FormData(signUpForm);
 
-        axios.post('https://banana-backend-production.up.railway.app/banana/app/register', signUpFormData).then((response) => {
+        axios.post('https://glorious-generosity-production.up.railway.app/banana/app/register', signUpFormData).then((response) => {
             if (response.data.data === '1') {
                 alert("User registered successfully.");
                 setInputValues({
@@ -128,24 +128,28 @@ export default function Register() {
 
     return (
         <>
-            <div className="flex justify-center items-center min-h-screen bg-yellow-400">
-                <div className="flex bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-4xl">
-                    <div className="flex-1 flex justify-center items-center">
-                        <img src={signUpImage} alt="Register Image" />
+            <div className="flex justify-center items-center min-h-screen bg-yellow-400 px-4">
+                <div className="flex flex-col sm:flex-row bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-4xl sm:w-11/12 md:w-9/12 lg:w-7/12 xl:w-5/12">
+
+                    {/* Image Section - Hidden on small screens */}
+                    <div className="flex-1 flex justify-center items-center mb-8 sm:mb-0 sm:order-first sm:block hidden">
+                        <img src={signUpImage} alt="Register Image" className="max-w-full h-auto sm:w-8/12" />
                     </div>
+
+                    {/* Form Section */}
                     <div className="flex-1 px-8 text-white">
-                        <h2 className="text-4xl font-bold mb-6">Sign-up To Banana</h2>
+                        <h2 className="text-4xl font-bold mb-6 text-center sm:text-3xl">Sign-up To Banana</h2>
                         <form id="signUpForm" onSubmit={userSingUp} method="post">
 
-                            <div className="flex space-x-2 mb-4">
-                                <div className="w-1/2">
-                                    <label forName="name">Name </label>
+                            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
+                                <div className="w-full sm:w-1/2">
+                                    <label htmlFor="name">Name</label>
                                     <input type="text" id="name" name="name"
                                         onChange={handleInputChange} value={inputValues.name} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
                                     <span className="error-message" id="error-name"></span>
                                 </div>
-                                <div className="w-1/2">
-                                    <label forName="phoneNumber">Phone</label>
+                                <div className="w-full sm:w-1/2">
+                                    <label htmlFor="phoneNumber">Phone</label>
                                     <input type="number" id="phoneNumber" name="phoneNumber"
                                         onChange={handleInputChange} value={inputValues.phoneNumber} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
                                     <span className="error-message" id="error-phoneNumber"></span>
@@ -153,25 +157,24 @@ export default function Register() {
                             </div>
 
                             <div className="mb-4">
-                                <label forName="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input type="text" id="email" name="email"
                                     onChange={handleInputChange} value={inputValues.email} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                                 <span className="error-message" id="error-email"></span>
                             </div>
 
-                            <div className="flex space-x-2 mb-4">
-                                <div className="w-1/2">
-                                    <label forName="password">Password</label>
+                            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
+                                <div className="w-full sm:w-1/2">
+                                    <label htmlFor="password">Password</label>
                                     <input type="password" id="password" name="password"
                                         onChange={handleInputChange} value={inputValues.password} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                                     <span className="error-message" id="error-password"></span>
                                 </div>
-                                <div className="w-1/2">
-                                    <label forName="confirm_password">Confirm Password</label>
+                                <div className="w-full sm:w-1/2">
+                                    <label htmlFor="confirm_password">Confirm Password</label>
                                     <input type="password" id="confirm_password" name="confirm_password"
                                         onChange={handleInputChange} value={inputValues.confirm_password} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                                     <span className="error-message" id="error-confirm_password"></span>
-
                                 </div>
                             </div>
 
@@ -187,7 +190,7 @@ export default function Register() {
                                     </Link>
                                 </p>
                             </div>
-                            <div id="userSignUpErrorMessage" className='mt-4 text-red-500 animate-pulse'></div>
+                            <div id="userSignUpErrorMessage" className='mt-4 text-red-500 animate-pulse text-center'></div>
 
                         </form>
                     </div>

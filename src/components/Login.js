@@ -55,7 +55,7 @@ export default function Login() {
         const formData = new FormData();
         formData.append('email', inputValues.email);
         formData.append('password', inputValues.password);
-        axios.post('https://banana-backend-production.up.railway.app/banana/app/login', formData)
+        axios.post('https://glorious-generosity-production.up.railway.app/banana/app/login', formData)
             .then((response) => {
                 if (response.data.data === '1') {
                     alert('Login successfully.');
@@ -79,8 +79,8 @@ export default function Login() {
         <div className="flex justify-center items-center min-h-screen bg-yellow-400 px-4">
             <div className="flex flex-col sm:flex-row bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-4xl sm:w-11/12 md:w-9/12 lg:w-7/12 xl:w-5/12">
 
-                {/* Image Section */}
-                <div className="flex-1 flex justify-center items-center mb-8 sm:mb-0 sm:order-first">
+                {/* Image Section - Hidden on small screens */}
+                <div className="flex-1 flex justify-center items-center mb-8  sm:mb-0 sm:order-first sm:block hidden">
                     <img src={loginImage} alt="Login Image" className="max-w-full h-auto sm:w-8/12" />
                 </div>
 
