@@ -61,7 +61,7 @@ export default function Navbar() {
 
                             <div className="hidden md:flex space-x-4">
                                 <Link to="/login" className="items-center border-0 py-2 px-5 text-yellow-400 hover:text-gray-800 hover:bg-yellow-400 rounded-md text-base transition duration-300 ease-in-out">Login</Link>
-                                <Link to="/register" className="items-center border-0 py-2 px-5 text-yellow-400 hover:text-gray-800 hover:bg-yellow-400 rounded-md text-base transition duration-300 ease-in-out">Sign-up</Link>
+                                <Link to="/register" className="items-center border-0 py-2 px-5 text-yellow-400 hover:text-gray-800 hover:bg-yellow-400 rounded-md text-base transition duration-300 ease-in-out">Register</Link>
                             </div>
 
                             <div className="md:hidden flex items-center">
@@ -88,7 +88,7 @@ export default function Navbar() {
                             <Link to="/service" onClick={closeMenu} className="text-yellow-400 hover:text-yellow-500 px-3 py-2 text-lg font-medium">Services</Link>
                             <Link to="/faq" onClick={closeMenu} className="text-yellow-400 hover:text-yellow-500 px-3 py-2 text-lg font-medium">FAQ</Link>
                             <Link to="/login" onClick={closeMenu} className="text-yellow-400 hover:text-yellow-500 px-3 py-2 text-lg font-medium">Login</Link>
-                            <Link to="/register" onClick={closeMenu} className="text-yellow-400 hover:text-yellow-500 px-3 py-2 text-lg font-medium">Sign-up</Link>
+                            <Link to="/register" onClick={closeMenu} className="text-yellow-400 hover:text-yellow-500 px-3 py-2 text-lg font-medium">Register</Link>
                         </div>
                     </div>
                 </nav>
