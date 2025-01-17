@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 import axios from 'axios';
 
 export default function Home() {
@@ -24,7 +24,6 @@ export default function Home() {
     formData.append('category', category || 'Un-Categorized');
     formData.append('productImage', productImage);
 
-    // Make API call here using axios
     axios
       .post('https://glorious-generosity-production.up.railway.app/banana/app/admin/product/addProduct', formData)
       .then((response) => {
@@ -36,7 +35,8 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gray-100 p-8 rounded-lg shadow-lg">
+    <div className="flex justify-center py-20 w-[300%] h-auto md:w-[20%] md:h-[50%] ">
+    <div className="bg-gray-100 w-full p-8  sm:w-[500%] px-10 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Add Product</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -129,5 +129,6 @@ export default function Home() {
         </button>
       </form>
     </div>
+    </div >
   );
 }

@@ -54,3 +54,14 @@ input::-ms-clear {
     display: none;
     /* Edge */
 }
+
+@media (max-width: 768px) {
+    #sidebar {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #sidebar li {
+        width: auto;
+    }
+}

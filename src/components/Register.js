@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import signUpImage from '../images/banana-waffers.webp'
+import signUpImage from '../images/logo.webp'
 import axios from 'axios'
 
 export default function Register() {
-
     const navigate = useNavigate()
 
     const [inputValues, setInputValues] = useState({
@@ -96,7 +95,7 @@ export default function Register() {
         }
 
         const userSignUpErrorMessage = document.getElementById('userSignUpErrorMessage');
-        
+
         const signUpForm = document.getElementById('signUpForm');
         const signUpFormData = new FormData(signUpForm);
 
@@ -128,31 +127,29 @@ export default function Register() {
 
     return (
         <>
-            <div className="flex justify-center items-center min-h-screen bg-yellow-400 px-4">
-                <div className="flex flex-col sm:flex-row bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-4xl sm:w-11/12 md:w-9/12 lg:w-7/12 xl:w-5/12">
-
-                    {/* Image Section - Hidden on small screens */}
-                    <div className="flex-1 flex justify-center items-center mb-8 sm:mb-0 sm:order-first sm:block hidden">
-                        <img src={signUpImage} alt="Register Image" className="max-w-full h-auto sm:w-8/12" />
+            <div className="flex justify-center items-center min-h-screen bg-yellow-400 px-4 mt-16 sm:mt-0">
+                <div className="flex bg-gray-800 p-2 py-8 rounded-lg shadow-lg w-full max-w-lg flex-col mt-16">
+                    <div className="flex justify-center items-center mb-6">
+                        <img
+                            src={signUpImage}
+                            alt="Logo"
+                            className="rounded-full max-w-xs h-36"
+                        />
                     </div>
-
-                    {/* Form Section */}
                     <div className="flex-1 px-8 text-white">
-                        <h2 className="text-4xl font-bold mb-6 text-center sm:text-3xl">Sign-up To Banana</h2>
                         <form id="signUpForm" onSubmit={userSingUp} method="post">
-
                             <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
                                 <div className="w-full sm:w-1/2">
                                     <label htmlFor="name">Name</label>
                                     <input type="text" id="name" name="name"
                                         onChange={handleInputChange} value={inputValues.name} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-                                    <span className="error-message" id="error-name"></span>
+                                    <span className="error-message text-red-500" id="error-name"></span>
                                 </div>
-                                <div className="w-full sm:w-1/2">
+                                <div className="w-full sm:w-1/2 mt-4 sm:mt-0">
                                     <label htmlFor="phoneNumber">Phone</label>
                                     <input type="number" id="phoneNumber" name="phoneNumber"
                                         onChange={handleInputChange} value={inputValues.phoneNumber} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-                                    <span className="error-message" id="error-phoneNumber"></span>
+                                    <span className="error-message text-red-500" id="error-phoneNumber"></span>
                                 </div>
                             </div>
 
@@ -160,27 +157,27 @@ export default function Register() {
                                 <label htmlFor="email">Email</label>
                                 <input type="text" id="email" name="email"
                                     onChange={handleInputChange} value={inputValues.email} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                                <span className="error-message" id="error-email"></span>
+                                <span className="error-message text-red-500" id="error-email"></span>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
+                            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-8">
                                 <div className="w-full sm:w-1/2">
                                     <label htmlFor="password">Password</label>
                                     <input type="password" id="password" name="password"
                                         onChange={handleInputChange} value={inputValues.password} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                                    <span className="error-message" id="error-password"></span>
+                                    <span className="error-message text-red-500" id="error-password"></span>
                                 </div>
-                                <div className="w-full sm:w-1/2">
+                                <div className="w-full sm:w-1/2 mt-4 sm:mt-0">
                                     <label htmlFor="confirm_password">Confirm Password</label>
                                     <input type="password" id="confirm_password" name="confirm_password"
                                         onChange={handleInputChange} value={inputValues.confirm_password} className="w-full text-gray-800 px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                                    <span className="error-message" id="error-confirm_password"></span>
+                                    <span className="error-message text-red-500" id="error-confirm_password"></span>
                                 </div>
                             </div>
 
                             <div className="mb-4">
                                 <button type="submit"
-                                    className="w-full py-2 bg-yellow-400 text-gray-800 font-semibold rounded-md hover:bg-yellow-500 hover:text-white">Sign-Up</button>
+                                    className="w-full py-2 bg-yellow-400 text-gray-800 font-semibold rounded-md hover:bg-yellow-500 hover:text-white">Register</button>
                             </div>
 
                             <div className="text-center text-sm">
